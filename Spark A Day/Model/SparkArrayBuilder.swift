@@ -26,7 +26,7 @@ struct SparkArrayBuilder {
     }
     
     func readFromFile(file: String) -> String! {
-        guard let filePath = Bundle.main.path(forResource: file, ofType: "txt") else {
+        guard let filePath = Bundle.main.path(forResource: file, ofType: "tsv") else {
                 return nil
         }
         do {
@@ -71,8 +71,12 @@ struct SparkArrayBuilder {
             let sparkComponents = row.components(separatedBy: "\t")
             sparkArray.append(sparkComponents)
             
-            print(sparkComponents[1])
+//            for component in sparkComponents {
+//                print(component)
+//            }
         }
+        
+        os_log(".....ARRAY COMPLETE.....", log: OSLog.sparkArrayBuilder, type: .info)
     }
     
 }

@@ -51,11 +51,11 @@ class ViewController: UIViewController {
         
         //Check what is saved in User Defaults
         checkForLoggedSparks()
-        
-//        var sb = SparkBuilder()
-//        sb.scheduleNotifications()
 
         let sab = SparkArrayBuilder(file: "sparks")
+        
+        var sb = SparkBuilder(array: sab.sparkArray)
+        sb.scheduleNotifications()
     }
     
     /**

@@ -20,25 +20,17 @@ struct SparkBuilder {
     
     var df = DateFormatter()
     
-    var sparkList = [
-        1: "SPARK 1",
-        2: "SPARK 2",
-        3: "SPARK 3",
-        4: "SPARK 4",
-        5: "SPARK 5",
-        6: "SPARK 6",
-        7: "SPARK 7",
-        8: "SPARK 8",
-        9: "SPARK 9",
-        10: "SPARK 10"
-      
-    ]
+    var sparkList: [[String]] = []
 //    var numberOfSparks = 10
     var chosenSpark: Int?
     
 //    init(date: Date) {
 //        scheduleNotifications(date: date)
 //    }
+    
+    init(array: [[String]]) {
+        sparkList = array
+    }
     
     mutating func scheduleNotifications() {
         let date = Date()
@@ -56,8 +48,8 @@ struct SparkBuilder {
             os_log("Count: %d", log: OSLog.sparkBuilder, type: .info, counter)
             os_log("Appending %d to SparkHolder", log: OSLog.sparkBuilder, type: .info, random)
             
-            content.title = "Spark A Day"
-            content.body = sparkList[random]!
+            content.title = sparkList[random][1]
+            content.body = sparkList[random][2]
             content.sound = UNNotificationSound.default
             content.categoryIdentifier = "categorySpark"
             
@@ -69,9 +61,9 @@ struct SparkBuilder {
             let trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
             
             let datestring = df.string(from: trigger.nextTriggerDate()!)
-            os_log("Notification %d Added for %{time_t}d", log: OSLog.sparkBuilder, type: .info, counter, datestring)
+            os_log("Notification %d Added for %{time_t}d", log: OSLog.sparkBuilder, type: .info, counter-1, datestring)
             
-            let request = UNNotificationRequest(identifier: sparkList[random]!, content: content, trigger: trigger)
+            let request = UNNotificationRequest(identifier: sparkList[random][4], content: content, trigger: trigger)
             
             UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error : Error?) in
                 if let theError = error {
@@ -83,7 +75,7 @@ struct SparkBuilder {
         
     mutating func getRandomSpark(numberOfSparks: Int) -> Int {
             //Get a random number from 0 to the amount of SPARKS
-        var n = Int.random(in: 1 ... numberOfSparks)
+        var n = Int.random(in: 0 ..< numberOfSparks)
             
             if (sparkLogArray.count == numberOfSparks) {
                 //All of the sparks have been used - time to reset
@@ -94,7 +86,7 @@ struct SparkBuilder {
             else {
                 //While the log array has that random number, attempt to find another that has not already been used
                 while (sparkLogArray.contains(n)) {
-                    n = Int.random(in: 1 ... numberOfSparks)
+                    n = Int.random(in: 0 ..< numberOfSparks)
                 }
                 
                 //Once a unique random number has been found, add it to the user defaults array and return it
