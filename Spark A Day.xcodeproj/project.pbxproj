@@ -13,6 +13,12 @@
 		BB0AB6AB23F60BCC00DB10E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0AB6A923F60BCC00DB10E0 /* Main.storyboard */; };
 		BB0AB6AD23F60BDB00DB10E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0AB6AC23F60BDB00DB10E0 /* Assets.xcassets */; };
 		BB0AB6B023F60BDB00DB10E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0AB6AE23F60BDB00DB10E0 /* LaunchScreen.storyboard */; };
+		BB0AB6B923F60FB400DB10E0 /* AppDelegate+NotificationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0AB6B823F60FB400DB10E0 /* AppDelegate+NotificationConfiguration.swift */; };
+		BB73E300240AEFED00F51E0A /* sparks.tsv in Resources */ = {isa = PBXBuildFile; fileRef = BB73E2FF240AEFED00F51E0A /* sparks.tsv */; };
+		BBB824182405EA05001270FC /* SparkBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB824172405EA05001270FC /* SparkBuilder.swift */; };
+		BBB8241A24060107001270FC /* OSLog+Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB8241924060107001270FC /* OSLog+Customization.swift */; };
+		BBE1FCB3240AD9810063A2E7 /* sparks.txt in Resources */ = {isa = PBXBuildFile; fileRef = BBE1FCB2240AD9810063A2E7 /* sparks.txt */; };
+		BBE1FCB5240ADA1C0063A2E7 /* SparkArrayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		BB0AB6AC23F60BDB00DB10E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB0AB6AF23F60BDB00DB10E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB0AB6B123F60BDB00DB10E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB0AB6B823F60FB400DB10E0 /* AppDelegate+NotificationConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+NotificationConfiguration.swift"; sourceTree = "<group>"; };
+		BB73E2FF240AEFED00F51E0A /* sparks.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sparks.tsv; sourceTree = "<group>"; };
+		BBB824172405EA05001270FC /* SparkBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkBuilder.swift; sourceTree = "<group>"; };
+		BBB8241924060107001270FC /* OSLog+Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Customization.swift"; sourceTree = "<group>"; };
+		BBE1FCB2240AD9810063A2E7 /* sparks.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = sparks.txt; sourceTree = "<group>"; };
+		BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkArrayBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,45 @@
 		BB0AB6A223F60BCC00DB10E0 /* Spark A Day */ = {
 			isa = PBXGroup;
 			children = (
-				BB0AB6A323F60BCC00DB10E0 /* AppDelegate.swift */,
-				BB0AB6A523F60BCC00DB10E0 /* SceneDelegate.swift */,
-				BB0AB6A723F60BCC00DB10E0 /* ViewController.swift */,
+				BBE1FCB1240AD8410063A2E7 /* Model */,
+				BBB824162405E933001270FC /* Controller */,
+				BB0AB6B723F60F7100DB10E0 /* Extensions */,
 				BB0AB6A923F60BCC00DB10E0 /* Main.storyboard */,
 				BB0AB6AC23F60BDB00DB10E0 /* Assets.xcassets */,
 				BB0AB6AE23F60BDB00DB10E0 /* LaunchScreen.storyboard */,
 				BB0AB6B123F60BDB00DB10E0 /* Info.plist */,
 			);
 			path = "Spark A Day";
+			sourceTree = "<group>";
+		};
+		BB0AB6B723F60F7100DB10E0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BB0AB6B823F60FB400DB10E0 /* AppDelegate+NotificationConfiguration.swift */,
+				BBB8241924060107001270FC /* OSLog+Customization.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BBB824162405E933001270FC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB0AB6A323F60BCC00DB10E0 /* AppDelegate.swift */,
+				BB0AB6A523F60BCC00DB10E0 /* SceneDelegate.swift */,
+				BB0AB6A723F60BCC00DB10E0 /* ViewController.swift */,
+				BBB824172405EA05001270FC /* SparkBuilder.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BBE1FCB1240AD8410063A2E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BBE1FCB2240AD9810063A2E7 /* sparks.txt */,
+				BB73E2FF240AEFED00F51E0A /* sparks.tsv */,
+				BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +167,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB73E300240AEFED00F51E0A /* sparks.tsv in Resources */,
+				BBE1FCB3240AD9810063A2E7 /* sparks.txt in Resources */,
 				BB0AB6B023F60BDB00DB10E0 /* LaunchScreen.storyboard in Resources */,
 				BB0AB6AD23F60BDB00DB10E0 /* Assets.xcassets in Resources */,
 				BB0AB6AB23F60BCC00DB10E0 /* Main.storyboard in Resources */,
@@ -138,7 +182,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB0AB6B923F60FB400DB10E0 /* AppDelegate+NotificationConfiguration.swift in Sources */,
+				BBE1FCB5240ADA1C0063A2E7 /* SparkArrayBuilder.swift in Sources */,
 				BB0AB6A823F60BCC00DB10E0 /* ViewController.swift in Sources */,
+				BBB8241A24060107001270FC /* OSLog+Customization.swift in Sources */,
+				BBB824182405EA05001270FC /* SparkBuilder.swift in Sources */,
 				BB0AB6A423F60BCC00DB10E0 /* AppDelegate.swift in Sources */,
 				BB0AB6A623F60BCC00DB10E0 /* SceneDelegate.swift in Sources */,
 			);
@@ -294,7 +342,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.malcomjones.Spark-A-Day";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +360,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.malcomjones.Spark-A-Day";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

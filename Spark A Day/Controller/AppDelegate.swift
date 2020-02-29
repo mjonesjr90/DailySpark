@@ -15,6 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // set app delegate as notification center delegate
+       UNUserNotificationCenter.current().delegate = self
+       
+       // User Permission for Local Notifications
+       registerPushNotifications()
+       
+       // Create notification categories
+       defineNotifications()
         return true
     }
 
