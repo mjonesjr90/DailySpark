@@ -61,11 +61,11 @@ struct SparkArrayBuilder {
     
     mutating func buildArray(data: String) {
         let sparkRow = cleanData(file: data).components(separatedBy: "\n")
-        os_log(".....BUILDING ARRAY.....", log: OSLog.sparkArrayBuilder, type: .info)
+        os_log("BUILDING ARRAY", log: OSLog.sparkArrayBuilder, type: .info)
         
         //For each new row created (array element), break up by tab delimiter and add to another array
         for row in sparkRow {
-            print(row)
+//            print(row)
             
             //Derive spark component array and add to spark array
             let sparkComponents = row.components(separatedBy: "\t")
@@ -76,7 +76,7 @@ struct SparkArrayBuilder {
 //            }
         }
         
-        os_log(".....ARRAY COMPLETE.....", log: OSLog.sparkArrayBuilder, type: .info)
+        os_log("ARRAY COMPLETE", log: OSLog.sparkArrayBuilder, type: .info)
     }
     
 }

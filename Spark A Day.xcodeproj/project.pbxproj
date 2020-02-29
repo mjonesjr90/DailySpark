@@ -17,7 +17,6 @@
 		BB73E300240AEFED00F51E0A /* sparks.tsv in Resources */ = {isa = PBXBuildFile; fileRef = BB73E2FF240AEFED00F51E0A /* sparks.tsv */; };
 		BBB824182405EA05001270FC /* SparkBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB824172405EA05001270FC /* SparkBuilder.swift */; };
 		BBB8241A24060107001270FC /* OSLog+Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB8241924060107001270FC /* OSLog+Customization.swift */; };
-		BBE1FCB3240AD9810063A2E7 /* sparks.txt in Resources */ = {isa = PBXBuildFile; fileRef = BBE1FCB2240AD9810063A2E7 /* sparks.txt */; };
 		BBE1FCB5240ADA1C0063A2E7 /* SparkArrayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,6 @@
 		BB73E2FF240AEFED00F51E0A /* sparks.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sparks.tsv; sourceTree = "<group>"; };
 		BBB824172405EA05001270FC /* SparkBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkBuilder.swift; sourceTree = "<group>"; };
 		BBB8241924060107001270FC /* OSLog+Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Customization.swift"; sourceTree = "<group>"; };
-		BBE1FCB2240AD9810063A2E7 /* sparks.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = sparks.txt; sourceTree = "<group>"; };
 		BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkArrayBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,7 +100,6 @@
 		BBE1FCB1240AD8410063A2E7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BBE1FCB2240AD9810063A2E7 /* sparks.txt */,
 				BB73E2FF240AEFED00F51E0A /* sparks.tsv */,
 				BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */,
 			);
@@ -168,7 +165,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB73E300240AEFED00F51E0A /* sparks.tsv in Resources */,
-				BBE1FCB3240AD9810063A2E7 /* sparks.txt in Resources */,
 				BB0AB6B023F60BDB00DB10E0 /* LaunchScreen.storyboard in Resources */,
 				BB0AB6AD23F60BDB00DB10E0 /* Assets.xcassets in Resources */,
 				BB0AB6AB23F60BCC00DB10E0 /* Main.storyboard in Resources */,

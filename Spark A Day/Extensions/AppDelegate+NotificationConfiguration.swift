@@ -59,9 +59,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
-
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss"
         
         let categoryID = response.notification.request.content.categoryIdentifier
         let actionID = response.actionIdentifier

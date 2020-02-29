@@ -16,6 +16,7 @@ extension OSLog {
     //Create OSLog categories
     static let sparkBuilder = OSLog(subsystem: bundle, category: "sparkBuilder")
     static let sparkArrayBuilder = OSLog(subsystem: bundle, category: "sparkArrayBuilder")
+    static let viewController = OSLog(subsystem: bundle, category: "viewController")
     
    
 }
