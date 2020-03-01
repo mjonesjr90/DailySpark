@@ -41,16 +41,29 @@ struct SparkBuilder {
     }
     
     mutating func scheduleNotifications() {
-        let date = Date()
-        print("SCHEDULING NOTIFICATIONS")
+        let currentDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        var dateComponents = DateComponents()
+        dateComponents.year = currentDateComponents.year
+        dateComponents.month = currentDateComponents.month
+        dateComponents.day = currentDateComponents.day
+        dateComponents.hour = 08
+        dateComponents.minute = 00
+        let date = Calendar.current.date(from: dateComponents)!
+        
+        os_log("SCHEDULING NOTIFICATIONS", log: OSLog.sparkBuilder, type: .info)
         
         df.dateStyle = .full
+        df.timeStyle = .full
         dfs.dateStyle = .short
         dfs.timeStyle = .short
         dfs.locale = .current
         
         var counter = 1
+        var weekendOffset = 0
         let content = UNMutableNotificationContent()
+        
+        os_log("Number of Sparks: %d", log: OSLog.sparkBuilder, type: .info, sparkList.count)
+        os_log("Max Notifications: %d", log: OSLog.sparkBuilder, type: .info, maxNotifications!)
         
         while (counter <= maxNotifications!) {
             
@@ -64,14 +77,36 @@ struct SparkBuilder {
             content.categoryIdentifier = "categorySpark"
             
             let val = counter * 1
-            let triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: val, to: date)!)
+            var triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
+            
+            
+            var trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
+            
+            let weekday = Calendar.current.dateComponents([.weekday], from: trigger.nextTriggerDate()!).weekday
+            
+            //Check if the trigger falls on a weekend
+            //If it does, use the offset to move it to a Monday
+            if(weekday! >= 2 && weekday! <= 6) {
+                os_log("Trigger is on Weekday: ", log: OSLog.sparkBuilder, type: .info, weekday!)
+            }
+            else if (weekday! == 7) {
+                os_log("Trigger is on Saturday: ", log: OSLog.sparkBuilder, type: .info, weekday!)
+                weekendOffset += 2
+                triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
+                trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
+            }
+            else {
+                os_log("Trigger is on Sunday: ", log: OSLog.sparkBuilder, type: .info, weekday!)
+                weekendOffset += 1
+                triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
+                trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
+            }
             
             counter+=1
             
-            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
-            
             let datestring = dfs.string(from: trigger.nextTriggerDate()!)
-            os_log("(%d) Spark %s Added for %s", log: OSLog.sparkBuilder, type: .info, counter-1, sparkList[random][4], datestring)
+            let datestringFull = df.string(from: trigger.nextTriggerDate()!)
+            os_log("(%d) Spark %s Added for %s", log: OSLog.sparkBuilder, type: .info, counter-1, sparkList[random][4], datestringFull)
             
             let request = UNNotificationRequest(identifier: sparkList[random][4], content: content, trigger: trigger)
             
@@ -88,10 +123,6 @@ struct SparkBuilder {
         
         configured = true
         defaults.set(configured, forKey: configuredKey)
-    }
-    
-    mutating func rescheduleNotifications() {
-        
     }
      
     /**
@@ -130,19 +161,24 @@ struct SparkBuilder {
     
     mutating func cleanSparkTracker() {
         os_log("Cleaning Spark Tracker ...", log: OSLog.sparkBuilder, type: .info)
-        var dayCounter = 1
-        var day = Calendar.current.date(byAdding: .day, value: dayCounter, to: Date())!
-        var dayString = dfs.string(from: day)
         
-        while(sparkTracker.keys.contains(dayString)) {
-            os_log("Removing: [%s:%s]", log: OSLog.sparkBuilder, type: .info, dayString, sparkTracker[dayString]!)
-            sparkTracker.removeValue(forKey: dayString)
+        dfs.dateStyle = .short
+        dfs.timeStyle = .short
+        dfs.locale = .current
 
-            dayCounter += 1
-            day = Calendar.current.date(byAdding: .second, value: dayCounter, to: Date())!
-            dayString = dfs.string(from: day)
+        //Get list of sparks in tracker
+        //Iterate through them and if the current date is before it, purge it from the tracker
+        let listOfSparkDates = Array(sparkTracker.keys)
+        for spark in listOfSparkDates {
+            let day = dfs.date(from: spark)
+            if(Date() < day!) {
+                os_log("Removing: [%s:%s]", log: OSLog.sparkBuilder, type: .info, spark, sparkTracker[spark]!)
+                sparkTracker.removeValue(forKey: spark)
+                defaults.set(sparkTracker, forKey: sparkTrackerKey)
+            }
         }
-        defaults.set(sparkTracker, forKey: sparkTrackerKey)
+        
+        print("Cleaned Spark Tracker: ", sparkTracker)
     }
     
     mutating func checkUserDefaults(){

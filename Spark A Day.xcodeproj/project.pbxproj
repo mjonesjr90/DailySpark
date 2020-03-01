@@ -14,7 +14,7 @@
 		BB0AB6AD23F60BDB00DB10E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0AB6AC23F60BDB00DB10E0 /* Assets.xcassets */; };
 		BB0AB6B023F60BDB00DB10E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0AB6AE23F60BDB00DB10E0 /* LaunchScreen.storyboard */; };
 		BB0AB6B923F60FB400DB10E0 /* AppDelegate+NotificationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0AB6B823F60FB400DB10E0 /* AppDelegate+NotificationConfiguration.swift */; };
-		BB73E300240AEFED00F51E0A /* sparks.tsv in Resources */ = {isa = PBXBuildFile; fileRef = BB73E2FF240AEFED00F51E0A /* sparks.tsv */; };
+		BB73E302240B3F8000F51E0A /* sparks.tsv in Resources */ = {isa = PBXBuildFile; fileRef = BB73E301240B3F8000F51E0A /* sparks.tsv */; };
 		BBB824182405EA05001270FC /* SparkBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB824172405EA05001270FC /* SparkBuilder.swift */; };
 		BBB8241A24060107001270FC /* OSLog+Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB8241924060107001270FC /* OSLog+Customization.swift */; };
 		BBE1FCB5240ADA1C0063A2E7 /* SparkArrayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */; };
@@ -30,7 +30,7 @@
 		BB0AB6AF23F60BDB00DB10E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB0AB6B123F60BDB00DB10E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB0AB6B823F60FB400DB10E0 /* AppDelegate+NotificationConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+NotificationConfiguration.swift"; sourceTree = "<group>"; };
-		BB73E2FF240AEFED00F51E0A /* sparks.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sparks.tsv; sourceTree = "<group>"; };
+		BB73E301240B3F8000F51E0A /* sparks.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sparks.tsv; path = ../../../../../Downloads/sparks.tsv; sourceTree = "<group>"; };
 		BBB824172405EA05001270FC /* SparkBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkBuilder.swift; sourceTree = "<group>"; };
 		BBB8241924060107001270FC /* OSLog+Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Customization.swift"; sourceTree = "<group>"; };
 		BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkArrayBuilder.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		BBE1FCB1240AD8410063A2E7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BB73E2FF240AEFED00F51E0A /* sparks.tsv */,
+				BB73E301240B3F8000F51E0A /* sparks.tsv */,
 				BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */,
 			);
 			path = Model;
@@ -164,7 +164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB73E300240AEFED00F51E0A /* sparks.tsv in Resources */,
+				BB73E302240B3F8000F51E0A /* sparks.tsv in Resources */,
 				BB0AB6B023F60BDB00DB10E0 /* LaunchScreen.storyboard in Resources */,
 				BB0AB6AD23F60BDB00DB10E0 /* Assets.xcassets in Resources */,
 				BB0AB6AB23F60BCC00DB10E0 /* Main.storyboard in Resources */,

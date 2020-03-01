@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         dfs.dateStyle = .short
         
         //For testing, reset everytime
-        //reset()
+//        reset()
         
         //Check what is saved in User Defaults
         checkUserDefaults()
@@ -64,6 +64,9 @@ class ViewController: UIViewController {
             //Use array to schedule notifications
             var sb = SparkBuilder(array: sab.sparkArray)
             sb.cleanSparkTracker()
+            
+            //Resechedule
+            sb.scheduleNotifications()
         }
     }
     
