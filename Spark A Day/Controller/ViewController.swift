@@ -27,6 +27,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
     
+    var titleLabelHolder: String = ""
+    var bodyLabelHolder: String = ""
+    
     //Formatting
     var df = DateFormatter()
     var dfs = DateFormatter()
@@ -90,8 +93,15 @@ class ViewController: UIViewController {
     }
     
     func updateUI() {
-        titleLabel.text = "Daily Spark"
-        bodyLabel.text = ""
+        
+        if(titleLabelHolder == "" || bodyLabelHolder == "") {
+            titleLabel.text = "Daily Spark"
+            bodyLabel.text = ""
+        }
+        else {
+            titleLabel.text = titleLabelHolder
+            bodyLabel.text = bodyLabelHolder
+        }
     }
     
     func checkUserDefaults(){

@@ -44,6 +44,13 @@ class SparkTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: animated)
+        }
+    }
 
     // MARK: - Table view data source
     func checkUserDefaults(){
@@ -112,6 +119,16 @@ class SparkTableViewController: UITableViewController {
         // Configure the cell...
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let spark = sparkArray[indexPath.row]
+        
+        if let viewController = storyboard?.instantiateViewController(identifier: "ViewController") as? ViewController {
+            viewController.titleLabelHolder = spark[1]
+            viewController.bodyLabelHolder = spark[3]
+            navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 
     /*
