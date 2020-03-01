@@ -13,9 +13,6 @@ class ViewController: UIViewController {
     
     //User Defaults
     let defaults = UserDefaults.standard
-
-    var sparkLogArray: [Int] = []
-    var sparkLogKey = "SparkLogKey"
     
     var sparkTracker: [String:String] = [:]
     var sparkTrackerKey = "SparkTrackerKey"
