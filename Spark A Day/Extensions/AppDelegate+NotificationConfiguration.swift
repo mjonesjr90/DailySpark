@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
+import os.log
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
@@ -64,12 +65,19 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         let actionID = response.actionIdentifier
         
         if actionID == UNNotificationDismissActionIdentifier {
-//            print("\(self.className) - userNotificationCenter(didRecieve): User dismissed notification - use default sleep times")
+            os_log("User dismissed notification", log: OSLog.notificationConfig, type: .info)
         }
             
         else if actionID == UNNotificationDefaultActionIdentifier {
-            if categoryID == "DOWN" {
-//                print("\(self.className) - userNotificationCenter(didRecieve): Down notification selected - open app and do nothing")
+            if categoryID == "SPARK" {
+                os_log("User selected notification", log: OSLog.notificationConfig, type: .info)
+                let title = response.notification.request.content.userInfo["title"] as! String
+                let body = response.notification.request.content.userInfo["body"] as! String
+                let longBody = response.notification.request.content.userInfo["longBody"] as! String
+
+                let sparkDictionary: [String: String] = ["title": title, "body": body, "longBody": longBody]
+
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notificationSelected"), object: nil, userInfo: sparkDictionary)
             }
         }
         

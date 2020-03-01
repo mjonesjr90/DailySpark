@@ -17,7 +17,7 @@ extension OSLog {
     static let sparkBuilder = OSLog(subsystem: bundle, category: "sparkBuilder")
     static let sparkArrayBuilder = OSLog(subsystem: bundle, category: "sparkArrayBuilder")
     static let viewController = OSLog(subsystem: bundle, category: "viewController")
-    
+    static let notificationConfig = OSLog(subsystem: bundle, category: "notificationConfig")
    
 }
 

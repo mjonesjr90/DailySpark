@@ -46,8 +46,9 @@ struct SparkBuilder {
         dateComponents.year = currentDateComponents.year
         dateComponents.month = currentDateComponents.month
         dateComponents.day = currentDateComponents.day
-        dateComponents.hour = 08
-        dateComponents.minute = 00
+//        dateComponents.hour = 08
+//        dateComponents.minute = 00
+//        dateComponents.second = 00
         let date = Calendar.current.date(from: dateComponents)!
         
         os_log("SCHEDULING NOTIFICATIONS", log: OSLog.sparkBuilder, type: .info)
@@ -74,35 +75,38 @@ struct SparkBuilder {
             content.title = sparkList[random][1]
             content.body = sparkList[random][2]
             content.sound = UNNotificationSound.default
-            content.categoryIdentifier = "categorySpark"
+            content.categoryIdentifier = "SPARK"
+            content.userInfo["title"] = sparkList[random][1]
+            content.userInfo["body"] = sparkList[random][2]
+            content.userInfo["longBody"] = sparkList[random][3]
             
-            let val = counter * 1
-            var triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
-            
+            let val = counter * 30
+            var triggerComponents = Calendar.current.dateComponents([.second], from: Calendar.current.date(byAdding: .second, value: (val + weekendOffset), to: date)!)
+            //.year, .month, .day, .hour, .minute, 
             
             var trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
             
-            let weekday = Calendar.current.dateComponents([.weekday], from: trigger.nextTriggerDate()!).weekday
+//            let weekday = Calendar.current.dateComponents([.weekday], from: trigger.nextTriggerDate()!).weekday
             
-            //Check if the trigger falls on a weekend
-            //If it does, use the offset to move it to a Monday
-            if(weekday! >= 2 && weekday! <= 6) {
-                os_log("Trigger is on Weekday: ", log: OSLog.sparkBuilder, type: .info, weekday!)
-            }
-            else if (weekday! == 7) {
-                os_log("Trigger is on Saturday: ", log: OSLog.sparkBuilder, type: .info, weekday!)
-                weekendOffset += 2
-                triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
-                trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
-            }
-            else {
-                os_log("Trigger is on Sunday: ", log: OSLog.sparkBuilder, type: .info, weekday!)
-                weekendOffset += 1
-                triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
-                trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
-            }
+//            Check if the trigger falls on a weekend
+//            If it does, use the offset to move it to a Monday
+//            if(weekday! >= 2 && weekday! <= 6) {
+//                os_log("Trigger is on Weekday: ", log: OSLog.sparkBuilder, type: .info, weekday!)
+//            }
+//            else if (weekday! == 7) {
+//                os_log("Trigger is on Saturday: ", log: OSLog.sparkBuilder, type: .info, weekday!)
+//                weekendOffset += 2
+//                triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
+//                trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
+//            }
+//            else {
+//                os_log("Trigger is on Sunday: ", log: OSLog.sparkBuilder, type: .info, weekday!)
+//                weekendOffset += 1
+//                triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
+//                trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
+//            }
             
-            counter+=1
+            counter += 1
             
             let datestring = dfs.string(from: trigger.nextTriggerDate()!)
             let datestringFull = df.string(from: trigger.nextTriggerDate()!)

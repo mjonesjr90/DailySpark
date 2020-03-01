@@ -26,17 +26,24 @@ class ViewController: UIViewController {
     var configured: Bool = false
     var configuredKey = "ConfiguredKey"
     
+    //UI
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var bodyLabel: UILabel!
+    
+    //Formatting
     var df = DateFormatter()
     var dfs = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addNotificationObservers() 
+        
         df.dateStyle = .full
         dfs.dateStyle = .short
         
         //For testing, reset everytime
-//        reset()
+        reset()
         
         //Check what is saved in User Defaults
         checkUserDefaults()
@@ -68,6 +75,26 @@ class ViewController: UIViewController {
             //Resechedule
             sb.scheduleNotifications()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        updateUI()
+    }
+    
+    // selector that was defined above
+    @objc func willEnterForeground() {
+        updateUI()
+    }
+    
+    func updateUI() {
+        titleLabel.text = "Daily Spark"
+        bodyLabel.text = ""
     }
     
     func checkUserDefaults(){
@@ -102,50 +129,29 @@ class ViewController: UIViewController {
         configured = false
         defaults.set(configured, forKey: configuredKey)
     }
+  
+    func addNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationSelected(notification:)), name: NSNotification.Name(rawValue: "notificationSelected"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
     
-//    func old() {
-//        //Check if app has been opened before and if a begin/end date has been set
-//        //If app has already been opened, a date will have been set
-//        print("Checking for begin date")
-//        if let begin = defaults.object(forKey: beginDateKey) as? Date {
-//            beginDate = begin
-//            print("Begin: ", df.string(from: beginDate!))
-//
-//            scheduleNotifications(date: today)
-//
-//            //Check for end date
-//            print("Checking for end date")
-//            if let end = defaults.object(forKey: endDateKey) as? Date {
-//                endDate = end
-//                print("End: ", df.string(from: endDate!))
-//            }
-//        }
-//        //If begin is not found, set the date to today, add it to defaults and then derive end date and set default
-//        else {
-//            print("Begin date not found - creating begin date ...")
-//            beginDate = Date()
-//            defaults.set(beginDate, forKey: beginDateKey)
-//            print("Begin: ", df.string(from: beginDate!))
-//
-//            endDate = Calendar.current.date(byAdding: .second, value: 10, to: beginDate!)
-//            defaults.set(endDate, forKey: endDateKey)
-//            print("End: ", df.string(from: endDate!))
-//        }
-//        
-//        //Check if the current date is after the end date
-//        //If it is, recalculate begin and end dates and reschedule notifications
-//        //Reset schedule for reminder notification
-//        if(today > endDate!) {
-//            beginDate = Date()
-//            defaults.set(beginDate, forKey: beginDateKey)
-//            print("Begin: ", df.string(from: beginDate!))
-//
-//            endDate = Calendar.current.date(byAdding: .second, value: 60, to: beginDate!)
-//            defaults.set(endDate, forKey: endDateKey)
-//            print("End: ", df.string(from: endDate!))
-//
-//            scheduleNotifications(date: today)
-//        }
-//    }
+    /**
+     This function runs when a user selects the notifiction. When the notification
+     is pressed, the app opens and this method modifies the UI with the info from the notification..
+     
+     - Parameters:
+        - notification: the current notification that was selected
+     */
+    @objc func notificationSelected(notification: NSNotification) {
+        os_log("Pulling data from notification ...", log: OSLog.viewController, type: .info)
+        if let title = notification.userInfo?["title"] as? String {
+            self.titleLabel.text = title
+        }
+        
+        if let body = notification.userInfo?["longBody"] as? String {
+            self.bodyLabel.text = body
+        }
+    }
 }
 
