@@ -17,10 +17,10 @@
 		BB4BE433240C4FE90061ADD3 /* SparkLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4BE432240C4FE90061ADD3 /* SparkLogView.swift */; };
 		BB4BE435240C588D0061ADD3 /* SparkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4BE434240C588D0061ADD3 /* SparkTableViewCell.swift */; };
 		BB4BE437240C5BD70061ADD3 /* SparkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4BE436240C5BD70061ADD3 /* SparkTableViewController.swift */; };
-		BB73E302240B3F8000F51E0A /* sparks.tsv in Resources */ = {isa = PBXBuildFile; fileRef = BB73E301240B3F8000F51E0A /* sparks.tsv */; };
 		BBB824182405EA05001270FC /* SparkBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB824172405EA05001270FC /* SparkBuilder.swift */; };
 		BBB8241A24060107001270FC /* OSLog+Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB8241924060107001270FC /* OSLog+Customization.swift */; };
 		BBE1FCB5240ADA1C0063A2E7 /* SparkArrayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */; };
+		BBF1463C240C7F48008C33E8 /* sparks.tsv in Resources */ = {isa = PBXBuildFile; fileRef = BBE7E043240C7C7900202007 /* sparks.tsv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +36,10 @@
 		BB4BE432240C4FE90061ADD3 /* SparkLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkLogView.swift; sourceTree = "<group>"; };
 		BB4BE434240C588D0061ADD3 /* SparkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkTableViewCell.swift; sourceTree = "<group>"; };
 		BB4BE436240C5BD70061ADD3 /* SparkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkTableViewController.swift; sourceTree = "<group>"; };
-		BB73E301240B3F8000F51E0A /* sparks.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sparks.tsv; path = ../../../../../Downloads/sparks.tsv; sourceTree = "<group>"; };
 		BBB824172405EA05001270FC /* SparkBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkBuilder.swift; sourceTree = "<group>"; };
 		BBB8241924060107001270FC /* OSLog+Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Customization.swift"; sourceTree = "<group>"; };
 		BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkArrayBuilder.swift; sourceTree = "<group>"; };
+		BBE7E043240C7C7900202007 /* sparks.tsv */ = {isa = PBXFileReference; lastKnownFileType = text; name = sparks.tsv; path = "/Users/malcomjonesjr/dev/ios/DailySpark/Spark A Day/Model/sparks.tsv"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +117,7 @@
 		BBE1FCB1240AD8410063A2E7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BB73E301240B3F8000F51E0A /* sparks.tsv */,
+				BBE7E043240C7C7900202007 /* sparks.tsv */,
 				BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */,
 			);
 			path = Model;
@@ -181,8 +181,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB73E302240B3F8000F51E0A /* sparks.tsv in Resources */,
 				BB0AB6B023F60BDB00DB10E0 /* LaunchScreen.storyboard in Resources */,
+				BBF1463C240C7F48008C33E8 /* sparks.tsv in Resources */,
 				BB0AB6AD23F60BDB00DB10E0 /* Assets.xcassets in Resources */,
 				BB0AB6AB23F60BCC00DB10E0 /* Main.storyboard in Resources */,
 			);

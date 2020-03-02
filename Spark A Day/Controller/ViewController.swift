@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         dfs.dateStyle = .short
         
         //For testing, reset everytime
-        reset()
+//        reset()
         
         //Check what is saved in User Defaults
         checkUserDefaults()

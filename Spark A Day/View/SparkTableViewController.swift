@@ -82,7 +82,7 @@ class SparkTableViewController: UITableViewController {
         for key in keyHolder {
             let date = dfs.date(from: key)
             //If date is in the past, add the corresponding spark to log
-            if(Date() < date!) {
+            if(Date() >= date!) {
                 //Iterate through the master array and add the spark to log once found
                 for a in array {
                     if(a.contains(sparkTracker[key]!)) {
@@ -98,12 +98,28 @@ class SparkTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         //Use one section to show one list
+//        var numOfSections: Int = 0
+//        if youHaveData
+//        {
+//            tableView.separatorStyle = .singleLine
+//            numOfSections            = 1
+//            tableView.backgroundView = nil
+//        }
+//        else
+//        {
+//            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+//            noDataLabel.text          = "No data available"
+//            noDataLabel.textColor     = UIColor.black
+//            noDataLabel.textAlignment = .center
+//            tableView.backgroundView  = noDataLabel
+//            tableView.separatorStyle  = .none
+//        }
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return sparkTracker.count
+        return sparkArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,10 +127,12 @@ class SparkTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? SparkTableViewCell else {
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
-        let spark = sparkArray[indexPath.row]
-        
-        cell.primaryLabel.text = spark[1]
-        cell.categoryLabel.text = spark[0]
+//        if(sparkArray.count > 0) {
+            let spark = sparkArray[indexPath.row]
+            
+            cell.primaryLabel.text = spark[1]
+            cell.categoryLabel.text = spark[0]
+//        }
 
         // Configure the cell...
 

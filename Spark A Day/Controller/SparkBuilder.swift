@@ -77,9 +77,8 @@ struct SparkBuilder {
             content.userInfo["body"] = sparkList[random][2]
             content.userInfo["longBody"] = sparkList[random][3]
             
-            let val = counter * 30
-            var triggerComponents = Calendar.current.dateComponents([.second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
-            //.year, .month, .day, .hour, .minute, 
+            let val = counter * 1
+            var triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
             
             var trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
             
