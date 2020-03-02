@@ -43,9 +43,9 @@ struct SparkBuilder {
         dateComponents.year = currentDateComponents.year
         dateComponents.month = currentDateComponents.month
         dateComponents.day = currentDateComponents.day
-//        dateComponents.hour = 08
-//        dateComponents.minute = 00
-//        dateComponents.second = 00
+        dateComponents.hour = 08
+        dateComponents.minute = 00
+        dateComponents.second = 00
         let date = Calendar.current.date(from: dateComponents)!
         
         os_log("SCHEDULING NOTIFICATIONS", log: OSLog.sparkBuilder, type: .info)
