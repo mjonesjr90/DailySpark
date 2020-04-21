@@ -57,13 +57,16 @@ struct SparkBuilder {
         dfs.locale = .current
         
         var counter = 1
+        var val = 0
         var weekendOffset = 0
         let content = UNMutableNotificationContent()
+        var startedToday = false
+        var triggerComponents = DateComponents()
         
         os_log("Number of Sparks: %d", log: OSLog.sparkBuilder, type: .info, sparkList.count)
         os_log("Max Notifications: %d", log: OSLog.sparkBuilder, type: .info, maxNotifications!)
         
-        while (counter <= maxNotifications!) {
+        while (counter < maxNotifications!) {
             
             //Get next spark to be used
             let random = getRandomSpark(numberOfSparks: sparkList.count)
@@ -77,8 +80,23 @@ struct SparkBuilder {
             content.userInfo["body"] = sparkList[random][2]
             content.userInfo["longBody"] = sparkList[random][3]
             
-            let val = counter * 1
-            var triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
+            //if it's possible to start today, set trigger accordingly
+            if(counter == 1 && (Date() < date)) {
+                os_log("Start today", log: OSLog.sparkBuilder, type: .info)
+                triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+                startedToday = true
+            }
+            else {
+                if(startedToday) {//Decrement all days going forward to ensure accuracy
+                    val = (counter * 1) - 1
+                    triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
+                }
+                else{
+                    val = counter * 1
+                    triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
+                }
+                
+            }
             
             var trigger = UNCalendarNotificationTrigger(dateMatching: triggerComponents, repeats: false)
             
