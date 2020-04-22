@@ -20,7 +20,8 @@
 		BBB824182405EA05001270FC /* SparkBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB824172405EA05001270FC /* SparkBuilder.swift */; };
 		BBB8241A24060107001270FC /* OSLog+Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB8241924060107001270FC /* OSLog+Customization.swift */; };
 		BBE1FCB5240ADA1C0063A2E7 /* SparkArrayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */; };
-		BBF1463C240C7F48008C33E8 /* sparks.tsv in Resources */ = {isa = PBXBuildFile; fileRef = BBE7E043240C7C7900202007 /* sparks.tsv */; };
+		BBF32AC1244FA72C0042C5A5 /* sparks.tsv in Resources */ = {isa = PBXBuildFile; fileRef = BBF32AC0244FA72C0042C5A5 /* sparks.tsv */; };
+		BBF32AC3244FDEAD0042C5A5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF32AC2244FDEAD0042C5A5 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +40,8 @@
 		BBB824172405EA05001270FC /* SparkBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkBuilder.swift; sourceTree = "<group>"; };
 		BBB8241924060107001270FC /* OSLog+Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Customization.swift"; sourceTree = "<group>"; };
 		BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkArrayBuilder.swift; sourceTree = "<group>"; };
-		BBE7E043240C7C7900202007 /* sparks.tsv */ = {isa = PBXFileReference; lastKnownFileType = text; name = sparks.tsv; path = "/Users/malcomjonesjr/dev/ios/DailySpark/Spark A Day/Model/sparks.tsv"; sourceTree = "<absolute>"; };
+		BBF32AC0244FA72C0042C5A5 /* sparks.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sparks.tsv; sourceTree = "<group>"; };
+		BBF32AC2244FDEAD0042C5A5 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = "Spark A Day/Controller/MenuViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		BBB824162405E933001270FC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BBF32AC2244FDEAD0042C5A5 /* MenuViewController.swift */,
 				BB0AB6A323F60BCC00DB10E0 /* AppDelegate.swift */,
 				BB0AB6A523F60BCC00DB10E0 /* SceneDelegate.swift */,
 				BB0AB6A723F60BCC00DB10E0 /* ViewController.swift */,
@@ -117,7 +120,7 @@
 		BBE1FCB1240AD8410063A2E7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BBE7E043240C7C7900202007 /* sparks.tsv */,
+				BBF32AC0244FA72C0042C5A5 /* sparks.tsv */,
 				BBE1FCB4240ADA1C0063A2E7 /* SparkArrayBuilder.swift */,
 			);
 			path = Model;
@@ -182,7 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB0AB6B023F60BDB00DB10E0 /* LaunchScreen.storyboard in Resources */,
-				BBF1463C240C7F48008C33E8 /* sparks.tsv in Resources */,
+				BBF32AC1244FA72C0042C5A5 /* sparks.tsv in Resources */,
 				BB0AB6AD23F60BDB00DB10E0 /* Assets.xcassets in Resources */,
 				BB0AB6AB23F60BCC00DB10E0 /* Main.storyboard in Resources */,
 			);
@@ -199,6 +202,7 @@
 				BB4BE437240C5BD70061ADD3 /* SparkTableViewController.swift in Sources */,
 				BBE1FCB5240ADA1C0063A2E7 /* SparkArrayBuilder.swift in Sources */,
 				BB0AB6A823F60BCC00DB10E0 /* ViewController.swift in Sources */,
+				BBF32AC3244FDEAD0042C5A5 /* MenuViewController.swift in Sources */,
 				BB4BE433240C4FE90061ADD3 /* SparkLogView.swift in Sources */,
 				BBB8241A24060107001270FC /* OSLog+Customization.swift in Sources */,
 				BBB824182405EA05001270FC /* SparkBuilder.swift in Sources */,

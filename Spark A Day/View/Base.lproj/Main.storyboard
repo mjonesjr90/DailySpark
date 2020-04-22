@@ -1,23 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16092.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G6f-Ow-RK7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G6f-Ow-RK7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16082.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="BIW-fH-EOg">
             <objects>
-                <viewController id="J2S-oB-t1K" sceneMemberID="viewController">
+                <viewController id="J2S-oB-t1K" customClass="MenuViewController" customModule="Spark_A_Day" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CqD-aY-rMU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eg-UY-RCH">
+                                <rect key="frame" x="20" y="118" width="182" height="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rD7-WL-egF">
+                                <rect key="frame" x="294" y="118" width="100" height="34"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="9vx-wm-FdH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZL-KL-fMq">
+                                <rect key="frame" x="135" y="792" width="144" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Reset Sparks">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetSparks:" destination="J2S-oB-t1K" eventType="touchUpInside" id="kA2-uP-IAK"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="YZL-KL-fMq" secondAttribute="bottom" constant="30" id="1TY-Sw-iyY"/>
+                            <constraint firstItem="8eg-UY-RCH" firstAttribute="top" secondItem="JtF-6B-wR3" secondAttribute="top" constant="30" id="36a-Ls-UlV"/>
+                            <constraint firstItem="YZL-KL-fMq" firstAttribute="centerX" secondItem="CqD-aY-rMU" secondAttribute="centerX" id="NCc-46-Id8"/>
+                            <constraint firstItem="8eg-UY-RCH" firstAttribute="leading" secondItem="JtF-6B-wR3" secondAttribute="leading" constant="20" id="Znh-yJ-2Vi"/>
+                            <constraint firstItem="JtF-6B-wR3" firstAttribute="trailing" secondItem="rD7-WL-egF" secondAttribute="trailing" constant="20" id="qE9-1k-nSP"/>
+                            <constraint firstItem="rD7-WL-egF" firstAttribute="top" secondItem="JtF-6B-wR3" secondAttribute="top" constant="30" id="taK-G3-Mai"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="JtF-6B-wR3"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ugb-CL-XjQ"/>
+                    <connections>
+                        <outlet property="menuView" destination="CqD-aY-rMU" id="qgK-Cn-gv4"/>
+                        <outlet property="notificationTimeTextField" destination="rD7-WL-egF" id="OQA-Bn-VyU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ocr-4E-zK7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -143,7 +183,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10j-6S-f0g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1910.144927536232" y="121.875"/>
+            <point key="canvasLocation" x="2014" y="122"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NcJ-yH-TEB">

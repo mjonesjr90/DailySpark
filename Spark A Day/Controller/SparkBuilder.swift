@@ -24,6 +24,12 @@ struct SparkBuilder {
     var configured: Bool = false
     var configuredKey = "ConfiguredKey"
     
+    var notificationHour: Int?
+    var notificationHourKey = "notificationHourKey"
+    
+    var notificationMin: Int?
+    var notificationMinKey = "notificationMinKey"
+    
     var df = DateFormatter()
     var dfs = DateFormatter()
     
@@ -43,8 +49,8 @@ struct SparkBuilder {
         dateComponents.year = currentDateComponents.year
         dateComponents.month = currentDateComponents.month
         dateComponents.day = currentDateComponents.day
-        dateComponents.hour = 08
-        dateComponents.minute = 00
+        dateComponents.hour = notificationHour
+        dateComponents.minute = notificationMin
         dateComponents.second = 00
         let date = Calendar.current.date(from: dateComponents)!
         
@@ -88,10 +94,12 @@ struct SparkBuilder {
             }
             else {
                 if(startedToday) {//Decrement all days going forward to ensure accuracy
+                    os_log("Decrement to ensure accuracy", log: OSLog.sparkBuilder, type: .info)
                     val = (counter * 1) - 1
                     triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
                 }
                 else{
+                    os_log("Don't decrement; not starting today", log: OSLog.sparkBuilder, type: .info)
                     val = counter * 1
                     triggerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Calendar.current.date(byAdding: .day, value: (val + weekendOffset), to: date)!)
                 }
@@ -150,9 +158,11 @@ struct SparkBuilder {
      */
     
     func countMax() -> Int {
+        os_log("Spark List Count: %d", log: OSLog.sparkBuilder, type: .info, sparkList.count)
         let daysPassed = Calendar.current.dateComponents([.day], from: beginDate!, to: Date()).day!
         let remainingDays = sparkList.count - daysPassed
-        
+        os_log("Days Passed: %d", log: OSLog.sparkBuilder, type: .info, daysPassed)
+        os_log("Remaining Days: %d", log: OSLog.sparkBuilder, type: .info, remainingDays)
         //If remaining days is less than 64, use that - otherwise use 64 as the max
         return (remainingDays < 64) ? remainingDays : 64
     }
@@ -163,17 +173,24 @@ struct SparkBuilder {
      */
 
     private mutating func getRandomSpark(numberOfSparks: Int) -> Int {
+        os_log("Number of Sparks: %d", log: OSLog.sparkBuilder, type: .info, numberOfSparks)
         //Get a random number from 0 to the amount of SPARKS
         var n = Int.random(in: 0 ..< numberOfSparks)
-        
+        os_log("Random Number: %d", log: OSLog.sparkBuilder, type: .info, n)
         //Use that random number to get a random ID from spark array to see if it's already been scheduled
         //It's the 5th element in a spark array
         //If it has been tracked, the while loop will continue until a untracked spark is found
         var randomSparkID = sparkList[n][4]
-        while (sparkTracker.values.contains(randomSparkID)) {
+        var count = 0
+        while (sparkTracker.values.contains(randomSparkID) && count < numberOfSparks) {
             n = Int.random(in: 0 ..< numberOfSparks)
             randomSparkID = sparkList[n][4]
+            os_log("Random Spark ID: %s", log: OSLog.sparkBuilder, type: .info, randomSparkID)
+            
+            count += 1
+            os_log("Random Spark Count: %d", log: OSLog.sparkBuilder, type: .info, count)
         }
+        os_log("Return n: %d", log: OSLog.sparkBuilder, type: .info, n)
         return n
     }
     
@@ -219,6 +236,22 @@ struct SparkBuilder {
             sparkTracker = sparksTracked
             print("Spark Tracker: ", sparkTracker)
         }
+        
+        os_log("Checking Notification Hour", log: OSLog.sparkBuilder, type: .info)
+        if let notHour = defaults.object(forKey: notificationHourKey) as? Int {
+            notificationHour = notHour
+        } else {
+            notificationHour = 8
+        }
+        print("Notification Hour: ", notificationHour!)
+        
+        os_log("Checking Notification Minute", log: OSLog.sparkBuilder, type: .info)
+        if let notMin = defaults.object(forKey: notificationMinKey) as? Int {
+            notificationMin = notMin
+        } else {
+            notificationMin = 00
+        }
+        print("Notification Min: ", notificationMin!)
     }
     
 }

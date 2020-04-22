@@ -13,7 +13,7 @@ import os.log
 struct SparkArrayBuilder {
 
     var filePath: String?
-    var sparkArray: [[String]] = []
+    var sparkArray = [[String]]()
     
     init(file: String) {
         let data = readFromFile(file: file)
@@ -65,7 +65,6 @@ struct SparkArrayBuilder {
         
         //For each new row created (array element), break up by tab delimiter and add to another array
         for row in sparkRow {
-//            print(row)
             
             //Derive spark component array and add to spark array
             let sparkComponents = row.components(separatedBy: "\t")
@@ -75,6 +74,8 @@ struct SparkArrayBuilder {
 //                print(component)
 //            }
         }
+        
+        os_log("Spark Array Count: %d", log: OSLog.viewController, type: .info, sparkArray.count)
         
         os_log("ARRAY COMPLETE", log: OSLog.sparkArrayBuilder, type: .info)
     }

@@ -23,6 +23,12 @@ class ViewController: UIViewController {
     var configured: Bool = false
     var configuredKey = "ConfiguredKey"
     
+    var notificationHour: Int?
+    var notificationHourKey = "notificationHourKey"
+    
+    var notificationMin: Int?
+    var notificationMinKey = "notificationMinKey"
+    
     //UI
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
@@ -31,15 +37,13 @@ class ViewController: UIViewController {
     var bodyLabelHolder: String = ""
     
     //Formatting
-    var df = DateFormatter()
     var dfs = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        os_log("viewDidLoad", log: OSLog.viewController, type: .info)
         addNotificationObservers() 
         
-        df.dateStyle = .full
         dfs.dateStyle = .short
         
         //For testing, reset everytime
@@ -48,7 +52,7 @@ class ViewController: UIViewController {
         //Check what is saved in User Defaults
         checkUserDefaults()
         
-        //Scheduling should only occur if this is the first time the app
+        //Initial scheduling should only occur if this is the first time the app
         //is opened or if the user decides to reset the notifications
         if(!configured) {
             //Set begin date
@@ -59,6 +63,7 @@ class ViewController: UIViewController {
             let sab = SparkArrayBuilder(file: "sparks")
             
             //Use array to schedule notifications
+            os_log("Spark List Count: %d", log: OSLog.viewController, type: .info, sab.sparkArray.count)
             var sb = SparkBuilder(array: sab.sparkArray)
             sb.scheduleNotifications()
         }
@@ -69,6 +74,7 @@ class ViewController: UIViewController {
             let sab = SparkArrayBuilder(file: "sparks")
             
             //Use array to schedule notifications
+            os_log("Spark List Count: %d", log: OSLog.viewController, type: .info, sab.sparkArray.count)
             var sb = SparkBuilder(array: sab.sparkArray)
             sb.cleanSparkTracker()
             
@@ -79,21 +85,29 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        os_log("viewWillAppear", log: OSLog.viewController, type: .info)
         updateUI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        updateUI()
+        os_log("viewWillDisappear", log: OSLog.viewController, type: .info)
+        //reset to default
+        titleLabelHolder = ""
+        bodyLabelHolder = ""
     }
     
     // selector that was defined above
     @objc func willEnterForeground() {
-        updateUI()
+        //reset to default
+        titleLabelHolder = ""
+        bodyLabelHolder = ""
     }
     
     func updateUI() {
-        
+        os_log("updateUI", log: OSLog.viewController, type: .info)
+        os_log("titleLabelHolder: %s", log: OSLog.viewController, type: .info, titleLabelHolder)
+        os_log("bodyLabelHolder: %s", log: OSLog.viewController, type: .info, bodyLabelHolder)
         if(titleLabelHolder == "" || bodyLabelHolder == "") {
             titleLabel.text = "Daily Spark"
             bodyLabel.text = ""
@@ -124,6 +138,22 @@ class ViewController: UIViewController {
             sparkTracker = sparksTracked
             print("Spark Tracker: ", sparkTracker)
         }
+        
+        os_log("Checking Notification Hour", log: OSLog.viewController, type: .info)
+        if let notHour = defaults.object(forKey: notificationHourKey) as? Int {
+            notificationHour = notHour
+        } else {
+            notificationHour = 8
+        }
+        print("Notification Hour: ", notificationHour!)
+        
+        os_log("Checking Notification Minute", log: OSLog.viewController, type: .info)
+        if let notMin = defaults.object(forKey: notificationMinKey) as? Int {
+            notificationMin = notMin
+        } else {
+            notificationMin = 00
+        }
+        print("Notification Min: ", notificationMin!)
     }
     
     func reset() {
@@ -131,7 +161,7 @@ class ViewController: UIViewController {
         defaults.set(sparkTracker, forKey: sparkTrackerKey)
         
         beginDate = Date()
-        defaults.set(dfs.string(from: beginDate!), forKey: beginDateKey)
+        defaults.set(beginDate, forKey: beginDateKey)
         
         configured = false
         defaults.set(configured, forKey: configuredKey)
@@ -153,12 +183,15 @@ class ViewController: UIViewController {
     @objc func notificationSelected(notification: NSNotification) {
         os_log("Pulling data from notification ...", log: OSLog.viewController, type: .info)
         if let title = notification.userInfo?["title"] as? String {
-            self.titleLabel.text = title
+            os_log("title: %s", log: OSLog.viewController, type: .info, title)
+            self.titleLabelHolder = title
         }
         
         if let body = notification.userInfo?["longBody"] as? String {
-            self.bodyLabel.text = body
+            os_log("body: %s", log: OSLog.viewController, type: .info, body)
+            self.bodyLabelHolder = body
         }
+        updateUI()
     }
 }
 
