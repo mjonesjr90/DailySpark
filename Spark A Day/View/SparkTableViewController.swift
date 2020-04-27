@@ -141,12 +141,15 @@ class SparkTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let spark = sparkArray[indexPath.row]
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(identifier: "SparkViewController") as! SparkViewController
+//            viewController.titleLabelHolder = spark[1]
+//            viewController.bodyLabelHolder = spark[3]
+        viewController.sparkCategoryHolder = spark[0]
+            viewController.sparkHeaderHolder = spark[1]
+            viewController.sparkBodyHolder = spark[3]
+            self.navigationController?.pushViewController(viewController, animated: true)
         
-        if let viewController = storyboard?.instantiateViewController(identifier: "ViewController") as? ViewController {
-            viewController.titleLabelHolder = spark[1]
-            viewController.bodyLabelHolder = spark[3]
-            navigationController?.pushViewController(viewController, animated: true)
-        }
     }
 
     /*

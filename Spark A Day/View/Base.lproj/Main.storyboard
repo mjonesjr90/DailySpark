@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G6f-Ow-RK7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G6f-Ow-RK7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -98,7 +98,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Spark Log"/>
                                 <connections>
-                                    <segue destination="uk4-Vx-3MG" kind="show" id="Dqw-fe-0fF"/>
+                                    <action selector="sparkLogButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wcx-gY-mFu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -184,6 +184,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10j-6S-f0g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2014" y="122"/>
+        </scene>
+        <!--Spark View Controller-->
+        <scene sceneID="oNm-w1-Ryw">
+            <objects>
+                <viewController storyboardIdentifier="SparkViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xmY-xn-Hxp" customClass="SparkViewController" customModule="Spark_A_Day" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H2R-8I-UBW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G81-c2-UFE">
+                                <rect key="frame" x="30" y="124" width="354" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mau-EO-A50">
+                                <rect key="frame" x="30" y="174.5" width="354" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ure-eU-SIW" firstAttribute="trailing" secondItem="mau-EO-A50" secondAttribute="trailing" constant="30" id="5A8-PH-sFm"/>
+                            <constraint firstItem="mau-EO-A50" firstAttribute="leading" secondItem="Ure-eU-SIW" secondAttribute="leading" constant="30" id="9hb-f0-VUO"/>
+                            <constraint firstItem="mau-EO-A50" firstAttribute="top" secondItem="G81-c2-UFE" secondAttribute="bottom" constant="30" id="JbZ-RS-zyU"/>
+                            <constraint firstItem="G81-c2-UFE" firstAttribute="top" secondItem="Ure-eU-SIW" secondAttribute="top" constant="80" id="Jjl-ef-ZzU"/>
+                            <constraint firstItem="Ure-eU-SIW" firstAttribute="trailing" secondItem="G81-c2-UFE" secondAttribute="trailing" constant="30" id="TY6-Jh-xVu"/>
+                            <constraint firstItem="G81-c2-UFE" firstAttribute="leading" secondItem="Ure-eU-SIW" secondAttribute="leading" constant="30" id="aA7-GB-WQN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ure-eU-SIW"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eDW-5l-aZs"/>
+                    <connections>
+                        <outlet property="sparkBody" destination="mau-EO-A50" id="esb-eB-MqB"/>
+                        <outlet property="sparkHeader" destination="G81-c2-UFE" id="iEB-Sd-YbF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dyz-Kg-TiA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2980" y="121"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NcJ-yH-TEB">

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import os.log
 
 class ViewController: UIViewController {
@@ -116,6 +117,43 @@ class ViewController: UIViewController {
             titleLabel.text = titleLabelHolder
             bodyLabel.text = bodyLabelHolder
         }
+    }
+    
+    func deriveSparks(array: [[String]]) -> [[String]] {
+        //Read in full spark array list
+        //Pull out Spark IDs from spark tracker that have passed using current date vs begin date into array
+        //Use this new array to determine which sparks from the full array to return
+        
+        os_log("Deriving sparks ...", log: OSLog.sparkTableView, type: .info)
+        var loggedSparks: [[String]] = []
+        let keyHolder = sparkTracker.keys
+        print(keyHolder)
+        
+        for key in keyHolder {
+            let date = dfs.date(from: key)
+            //If date is in the past, add the corresponding spark to log
+            if(Date() >= date!) {
+                //Iterate through the master array and add the spark to log once found
+                for a in array {
+                    if(a.contains(sparkTracker[key]!)) {
+                        loggedSparks.append(a)
+                    }
+                }
+            }
+        }
+        
+        print(loggedSparks)
+        return loggedSparks
+    }
+    
+    @IBAction func sparkLogButtonPress(_ sender: Any) {
+        //Build array from file
+        let sab = SparkArrayBuilder(file: "sparks")
+        let sparkArray = deriveSparks(array: sab.sparkArray)
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let hostController = UIHostingController(rootView: SparkLogList(sparkArray: sparkArray))
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func checkUserDefaults(){
