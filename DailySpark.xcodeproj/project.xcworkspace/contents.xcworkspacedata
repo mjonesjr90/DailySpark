@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Spark A Day.xcodeproj">
+      location = "self:/Users/malcomjonesjr/dev/ios/DailySpark/DailySpark.xcodeproj">
    </FileRef>
 </Workspace>
