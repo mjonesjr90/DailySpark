@@ -14,6 +14,8 @@ struct SparkLogDetail: View {
     var sparkCategory: String
     var sparkBody: String
     
+    @Binding var show : Bool
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(sparkHeader)
@@ -33,6 +35,7 @@ struct SparkLogDetail: View {
 
 struct SparkLogDetail_Previews: PreviewProvider {
     static var previews: some View {
-        SparkLogDetail(sparkHeader: "Step Into Your Power", sparkCategory: "Tools", sparkBody: "Answer this prompt in 5 different ways:  \"If I step into my power, ____________\"")
+        
+        SparkLogDetail(sparkHeader: "Step Into Your Power", sparkCategory: "Tools", sparkBody: "Answer this prompt in 5 different ways:  \"If I step into my power, ____________\"", show: .constant(true))
     }
 }

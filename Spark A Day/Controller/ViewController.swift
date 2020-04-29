@@ -43,9 +43,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("viewDidLoad", log: OSLog.viewController, type: .info)
-        addNotificationObservers() 
+//        addNotificationObservers() 
         
         dfs.dateStyle = .short
+        dfs.timeStyle = .short
+        dfs.locale = .current
+
         
         //For testing, reset everytime
 //        reset()
@@ -150,10 +153,16 @@ class ViewController: UIViewController {
         //Build array from file
         let sab = SparkArrayBuilder(file: "sparks")
         let sparkArray = deriveSparks(array: sab.sparkArray)
-        
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let hostController = UIHostingController(rootView: SparkLogList(sparkArray: sparkArray))
-        self.navigationController?.pushViewController(viewController, animated: true)
+//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let sparkListController = SparkLogList(
+            sparkArray: sparkArray,
+            dismissAction: {
+                self.dismiss( animated: true, completion: nil )
+        })
+        let hostController = UIHostingController(rootView: sparkListController)
+//        let hostController = UIHostingController(rootView: SparkLogList(sparkArray: sparkArray))
+        hostController.modalPresentationStyle = .fullScreen
+        present(hostController, animated: true)
     }
     
     func checkUserDefaults(){
@@ -205,11 +214,11 @@ class ViewController: UIViewController {
         defaults.set(configured, forKey: configuredKey)
     }
   
-    func addNotificationObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationSelected(notification:)), name: NSNotification.Name(rawValue: "notificationSelected"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
-    }
+//    func addNotificationObservers() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(notificationSelected(notification:)), name: NSNotification.Name(rawValue: "notificationSelected"), object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+//    }
     
     /**
      This function runs when a user selects the notifiction. When the notification
@@ -218,18 +227,18 @@ class ViewController: UIViewController {
      - Parameters:
         - notification: the current notification that was selected
      */
-    @objc func notificationSelected(notification: NSNotification) {
-        os_log("Pulling data from notification ...", log: OSLog.viewController, type: .info)
-        if let title = notification.userInfo?["title"] as? String {
-            os_log("title: %s", log: OSLog.viewController, type: .info, title)
-            self.titleLabelHolder = title
-        }
-        
-        if let body = notification.userInfo?["longBody"] as? String {
-            os_log("body: %s", log: OSLog.viewController, type: .info, body)
-            self.bodyLabelHolder = body
-        }
-        updateUI()
-    }
+//    @objc func notificationSelected(notification: NSNotification) {
+//        os_log("Pulling data from notification ...", log: OSLog.viewController, type: .info)
+//        if let title = notification.userInfo?["title"] as? String {
+//            os_log("title: %s", log: OSLog.viewController, type: .info, title)
+//            self.titleLabelHolder = title
+//        }
+//
+//        if let body = notification.userInfo?["longBody"] as? String {
+//            os_log("body: %s", log: OSLog.viewController, type: .info, body)
+//            self.bodyLabelHolder = body
+//        }
+//        updateUI()
+//    }
 }
 

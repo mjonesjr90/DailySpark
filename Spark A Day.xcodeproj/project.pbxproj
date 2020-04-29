@@ -18,6 +18,8 @@
 		BB4BE433240C4FE90061ADD3 /* SparkLogList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4BE432240C4FE90061ADD3 /* SparkLogList.swift */; };
 		BB4BE435240C588D0061ADD3 /* SparkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4BE434240C588D0061ADD3 /* SparkTableViewCell.swift */; };
 		BB4BE437240C5BD70061ADD3 /* SparkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4BE436240C5BD70061ADD3 /* SparkTableViewController.swift */; };
+		BB52505C2458D72200A9EA99 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52505B2458D72200A9EA99 /* MainView.swift */; };
+		BB52505E2458D9C700A9EA99 /* ViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52505D2458D9C700A9EA99 /* ViewControllerWrapper.swift */; };
 		BBB824182405EA05001270FC /* SparkBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB824172405EA05001270FC /* SparkBuilder.swift */; };
 		BBB8241A24060107001270FC /* OSLog+Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB8241924060107001270FC /* OSLog+Customization.swift */; };
 		BBC09DC924577207004887C1 /* SparkLogDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC09DC824577207004887C1 /* SparkLogDetail.swift */; };
@@ -41,6 +43,8 @@
 		BB4BE432240C4FE90061ADD3 /* SparkLogList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkLogList.swift; sourceTree = "<group>"; };
 		BB4BE434240C588D0061ADD3 /* SparkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkTableViewCell.swift; sourceTree = "<group>"; };
 		BB4BE436240C5BD70061ADD3 /* SparkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkTableViewController.swift; sourceTree = "<group>"; };
+		BB52505B2458D72200A9EA99 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		BB52505D2458D9C700A9EA99 /* ViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerWrapper.swift; sourceTree = "<group>"; };
 		BBB824172405EA05001270FC /* SparkBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkBuilder.swift; sourceTree = "<group>"; };
 		BBB8241924060107001270FC /* OSLog+Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Customization.swift"; sourceTree = "<group>"; };
 		BBC09DC824577207004887C1 /* SparkLogDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SparkLogDetail.swift; path = "Spark A Day/Controller/SparkLogDetail.swift"; sourceTree = SOURCE_ROOT; };
@@ -103,6 +107,7 @@
 			children = (
 				BB0AB6AC23F60BDB00DB10E0 /* Assets.xcassets */,
 				BB0AB6AE23F60BDB00DB10E0 /* LaunchScreen.storyboard */,
+				BB52505B2458D72200A9EA99 /* MainView.swift */,
 				BB0AB6A923F60BCC00DB10E0 /* Main.storyboard */,
 				BBC09DC824577207004887C1 /* SparkLogDetail.swift */,
 				BBC09DCA24577F9C004887C1 /* SparkLogRow.swift */,
@@ -120,6 +125,7 @@
 				BB0AB6A323F60BCC00DB10E0 /* AppDelegate.swift */,
 				BB0AB6A523F60BCC00DB10E0 /* SceneDelegate.swift */,
 				BB0AB6A723F60BCC00DB10E0 /* ViewController.swift */,
+				BB52505D2458D9C700A9EA99 /* ViewControllerWrapper.swift */,
 				BB436CCE2451C212006B1AE3 /* SparkViewController.swift */,
 				BBB824172405EA05001270FC /* SparkBuilder.swift */,
 			);
@@ -213,6 +219,7 @@
 				BBC09DCB24577F9C004887C1 /* SparkLogRow.swift in Sources */,
 				BB0AB6A823F60BCC00DB10E0 /* ViewController.swift in Sources */,
 				BBF32AC3244FDEAD0042C5A5 /* MenuViewController.swift in Sources */,
+				BB52505E2458D9C700A9EA99 /* ViewControllerWrapper.swift in Sources */,
 				BBC09DC924577207004887C1 /* SparkLogDetail.swift in Sources */,
 				BB4BE433240C4FE90061ADD3 /* SparkLogList.swift in Sources */,
 				BBB8241A24060107001270FC /* OSLog+Customization.swift in Sources */,
@@ -220,6 +227,7 @@
 				BB436CCF2451C212006B1AE3 /* SparkViewController.swift in Sources */,
 				BB4BE435240C588D0061ADD3 /* SparkTableViewCell.swift in Sources */,
 				BB0AB6A423F60BCC00DB10E0 /* AppDelegate.swift in Sources */,
+				BB52505C2458D72200A9EA99 /* MainView.swift in Sources */,
 				BB0AB6A623F60BCC00DB10E0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
