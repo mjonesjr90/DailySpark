@@ -14,14 +14,14 @@ struct MenuView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             VStack(alignment: .leading) {
                 MenuWrapper()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .padding()
-            .navigationBarTitle(Text("Menu"))
-        }
+//            .navigationBarTitle(Text("Menu"))
+//        }
     }
 }
 

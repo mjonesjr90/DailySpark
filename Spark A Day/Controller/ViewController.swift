@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         os_log("viewDidLoad", log: OSLog.viewController, type: .info)
-//        addNotificationObservers() 
+//        addNotificationObservers()
         
         dfs.dateStyle = .short
         dfs.timeStyle = .short
@@ -73,6 +73,41 @@ class ViewController: UIViewController {
         }
         
         //Resechedule notifications that haven't been sent yet, up to 64 max if applicable
+//        if(configured) {
+//            //Build array from file
+//            let sab = SparkArrayBuilder(file: "sparks")
+//
+//            //Use array to schedule notifications
+//            os_log("Spark List Count: %d", log: OSLog.viewController, type: .info, sab.sparkArray.count)
+//            var sb = SparkBuilder(array: sab.sparkArray)
+//            sb.cleanSparkTracker()
+//
+//            //Resechedule
+//            sb.scheduleNotifications()
+//        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        os_log("viewWillAppear", log: OSLog.viewController, type: .info)
+        update()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        os_log("viewWillDisappear", log: OSLog.viewController, type: .info)
+        update()
+    }
+    
+    // selector that was defined above
+    @objc func willEnterForeground() {
+        update()
+    }
+    
+    func update() {
+        titleLabel.text = "DailySpark"
+        bodyLabel.text = ""
+        
         if(configured) {
             //Build array from file
             let sab = SparkArrayBuilder(file: "sparks")
@@ -85,41 +120,17 @@ class ViewController: UIViewController {
             //Resechedule
             sb.scheduleNotifications()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        os_log("viewWillAppear", log: OSLog.viewController, type: .info)
-        updateUI()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        os_log("viewWillDisappear", log: OSLog.viewController, type: .info)
-        //reset to default
-        titleLabelHolder = ""
-        bodyLabelHolder = ""
-    }
-    
-    // selector that was defined above
-    @objc func willEnterForeground() {
-        //reset to default
-        titleLabelHolder = ""
-        bodyLabelHolder = ""
-    }
-    
-    func updateUI() {
-        os_log("updateUI", log: OSLog.viewController, type: .info)
-        os_log("titleLabelHolder: %s", log: OSLog.viewController, type: .info, titleLabelHolder)
-        os_log("bodyLabelHolder: %s", log: OSLog.viewController, type: .info, bodyLabelHolder)
-        if(titleLabelHolder == "" || bodyLabelHolder == "") {
-            titleLabel.text = "Daily Spark"
-            bodyLabel.text = ""
-        }
-        else {
-            titleLabel.text = titleLabelHolder
-            bodyLabel.text = bodyLabelHolder
-        }
+//        os_log("updateUI", log: OSLog.viewController, type: .info)
+//        os_log("titleLabelHolder: %s", log: OSLog.viewController, type: .info, titleLabelHolder)
+//        os_log("bodyLabelHolder: %s", log: OSLog.viewController, type: .info, bodyLabelHolder)
+//        if(titleLabelHolder == "" || bodyLabelHolder == "") {
+//            titleLabel.text = "Daily Spark"
+//            bodyLabel.text = ""
+//        }
+//        else {
+//            titleLabel.text = titleLabelHolder
+//            bodyLabel.text = bodyLabelHolder
+//        }
     }
     
     func deriveSparks(array: [[String]]) -> [[String]] {

@@ -20,23 +20,18 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                if self.isPresented == false {
-                    ViewControllerWrapper()
-                } else if self.isPresented == true {
-                    SparkLogDetail(sparkHeader: self.sparkHeader, sparkCategory: "", sparkBody: self.sparkBody, show: self.$isPresented)
-                }
-                
+                ViewControllerWrapper()
             }
-            .navigationBarItems(leading: 
-                NavigationLink(destination: MenuView()) {
-                    Text("Menu")
-                }
+            .navigationBarItems(leading:
+                NavigationLink(destination: AnyView(MenuView())) {Text("Menu")}
             )
-            .onAppear {
+            .onAppear(perform: {
                 print("Open ViewControllerWrapper")
                 
                 NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "notificationSelected"), object: nil, queue: .main) { (Notification) in
+                    
                     self.isPresented = true
+                    
                     os_log("Pulling data from notification ...", log: OSLog.viewController, type: .info)
                     if let title = Notification.userInfo?["title"] as? String {
                         os_log("title: %s", log: OSLog.viewController, type: .info, title)
@@ -48,6 +43,9 @@ struct MainView: View {
                         self.sparkBody = body
                     }
                 }
+            })
+            .sheet(isPresented: $isPresented) {
+                SparkLogDetail(sparkHeader: self.sparkHeader, sparkCategory: "", sparkBody: self.sparkBody, show: self.$isPresented)
             }
         }
         
