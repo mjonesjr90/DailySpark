@@ -18,28 +18,39 @@ struct MainView: View {
     @State var sparkBody: String = ""
     
     var body: some View {
-        ZStack {
-            NavigationLink(destination: SparkLogDetail(sparkHeader: sparkHeader, sparkCategory: "", sparkBody: sparkBody, show: self.$isPresented), isActive: self.$isPresented) {
-                Text("")
-            }
-            ViewControllerWrapper()
-        }.onAppear {
-            print("Open ViewControllerWrapper")
-            
-            NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "notificationSelected"), object: nil, queue: .main) { (Notification) in
-                self.isPresented = true
-                os_log("Pulling data from notification ...", log: OSLog.viewController, type: .info)
-                if let title = Notification.userInfo?["title"] as? String {
-                    os_log("title: %s", log: OSLog.viewController, type: .info, title)
-                    self.sparkHeader = title
+        NavigationView {
+            ZStack {
+                if self.isPresented == false {
+                    ViewControllerWrapper()
+                } else if self.isPresented == true {
+                    SparkLogDetail(sparkHeader: self.sparkHeader, sparkCategory: "", sparkBody: self.sparkBody, show: self.$isPresented)
                 }
                 
-                if let body = Notification.userInfo?["longBody"] as? String {
-                    os_log("body: %s", log: OSLog.viewController, type: .info, body)
-                    self.sparkBody = body
+            }
+            .navigationBarItems(leading: 
+                NavigationLink(destination: MenuView()) {
+                    Text("Menu")
+                }
+            )
+            .onAppear {
+                print("Open ViewControllerWrapper")
+                
+                NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "notificationSelected"), object: nil, queue: .main) { (Notification) in
+                    self.isPresented = true
+                    os_log("Pulling data from notification ...", log: OSLog.viewController, type: .info)
+                    if let title = Notification.userInfo?["title"] as? String {
+                        os_log("title: %s", log: OSLog.viewController, type: .info, title)
+                        self.sparkHeader = title
+                    }
+                    
+                    if let body = Notification.userInfo?["longBody"] as? String {
+                        os_log("body: %s", log: OSLog.viewController, type: .info, body)
+                        self.sparkBody = body
+                    }
                 }
             }
         }
+        
          
     }
     

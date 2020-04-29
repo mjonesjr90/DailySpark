@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,19 +10,19 @@
         <!--Menu View Controller-->
         <scene sceneID="BIW-fH-EOg">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="J2S-oB-t1K" customClass="MenuViewController" customModule="Spark_A_Day" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menuVC" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J2S-oB-t1K" customClass="MenuViewController" customModule="Spark_A_Day" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CqD-aY-rMU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eg-UY-RCH">
-                                <rect key="frame" x="20" y="144" width="182" height="28"/>
+                                <rect key="frame" x="20" y="74" width="182" height="28"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rD7-WL-egF">
-                                <rect key="frame" x="294" y="144" width="100" height="34"/>
+                                <rect key="frame" x="294" y="74" width="100" height="34"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <constraints>
@@ -41,25 +41,15 @@
                                     <action selector="resetSparks:" destination="J2S-oB-t1K" eventType="touchUpInside" id="kA2-uP-IAK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJR-yf-JNg">
-                                <rect key="frame" x="30" y="64" width="44" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="dismissVC:" destination="J2S-oB-t1K" eventType="touchUpInside" id="BmQ-OC-Cal"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="YZL-KL-fMq" secondAttribute="bottom" constant="30" id="1TY-Sw-iyY"/>
-                            <constraint firstItem="8eg-UY-RCH" firstAttribute="top" secondItem="JtF-6B-wR3" secondAttribute="top" constant="100" id="36a-Ls-UlV"/>
-                            <constraint firstItem="dJR-yf-JNg" firstAttribute="top" secondItem="JtF-6B-wR3" secondAttribute="top" constant="20" id="6rA-Cq-XaX"/>
-                            <constraint firstItem="dJR-yf-JNg" firstAttribute="leading" secondItem="JtF-6B-wR3" secondAttribute="leading" constant="30" id="FEV-6I-zFg"/>
+                            <constraint firstItem="8eg-UY-RCH" firstAttribute="top" secondItem="JtF-6B-wR3" secondAttribute="top" constant="30" id="36a-Ls-UlV"/>
                             <constraint firstItem="YZL-KL-fMq" firstAttribute="centerX" secondItem="CqD-aY-rMU" secondAttribute="centerX" id="NCc-46-Id8"/>
                             <constraint firstItem="8eg-UY-RCH" firstAttribute="leading" secondItem="JtF-6B-wR3" secondAttribute="leading" constant="20" id="Znh-yJ-2Vi"/>
                             <constraint firstItem="JtF-6B-wR3" firstAttribute="trailing" secondItem="rD7-WL-egF" secondAttribute="trailing" constant="20" id="qE9-1k-nSP"/>
-                            <constraint firstItem="rD7-WL-egF" firstAttribute="top" secondItem="JtF-6B-wR3" secondAttribute="top" constant="100" id="taK-G3-Mai"/>
+                            <constraint firstItem="rD7-WL-egF" firstAttribute="top" secondItem="JtF-6B-wR3" secondAttribute="top" constant="30" id="taK-G3-Mai"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JtF-6B-wR3"/>
                     </view>
@@ -111,25 +101,14 @@
                                     <action selector="sparkLogButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wcx-gY-mFu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxO-dR-1eB">
-                                <rect key="frame" x="30" y="64" width="50" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Menu"/>
-                                <connections>
-                                    <action selector="sparkLogButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nl1-zK-NBs"/>
-                                    <segue destination="J2S-oB-t1K" kind="show" id="6vH-WM-MGq"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="cQB-Dp-Cfq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F7h-ne-IPz"/>
-                            <constraint firstItem="UxO-dR-1eB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="MAv-JY-6oP"/>
                             <constraint firstItem="cQB-Dp-Cfq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="RfW-uU-4HN"/>
                             <constraint firstAttribute="trailing" secondItem="cQB-Dp-Cfq" secondAttribute="trailing" constant="30" id="UVm-Q0-LRM"/>
                             <constraint firstItem="64S-2Z-2pm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZjQ-rb-83V"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="64S-2Z-2pm" secondAttribute="bottom" constant="30" id="uVA-fB-et3"/>
-                            <constraint firstItem="UxO-dR-1eB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="vhx-xp-Vgg"/>
                             <constraint firstItem="cQB-Dp-Cfq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="z5i-7R-0Rf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
