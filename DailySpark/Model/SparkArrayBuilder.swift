@@ -10,15 +10,33 @@ import UIKit
 import UserNotifications
 import os.log
 
-struct SparkArrayBuilder {
+class SparkArrayBuilder: ObservableObject {
+    
+    //User Defaults
+    let defaults = UserDefaults.standard
 
     var filePath: String?
-    var sparkArray = [[String]]()
+    @Published var sparkArray = [[String]]()
+    @Published var derivedSparkArray = [[String]]()
+    var dfs = DateFormatter()
+    
+    var sparkTracker: [String:String] = [:]
+    var sparkTrackerKey = "SparkTrackerKey"
     
     init(file: String) {
+        dfs.dateStyle = .short
+        dfs.timeStyle = .short
+        dfs.locale = .current
+        
+        if let sparksTracked = defaults.object(forKey: sparkTrackerKey) as? [String: String] {
+            sparkTracker = sparksTracked
+            print("Spark Tracker: ", sparkTracker)
+        }
+        
         let data = readFromFile(file: file)
         if (data != nil) {
             buildArray(data: data!)
+//            derivedSparkArray = deriveSparks(array: sparkArray)
         }
         else {
             os_log("Data is nil", log: OSLog.sparkArrayBuilder, type: .info)
@@ -59,7 +77,7 @@ struct SparkArrayBuilder {
         - data: A String representation of data
      */
     
-    mutating func buildArray(data: String) {
+    func buildArray(data: String) {
         let sparkRow = cleanData(file: data).components(separatedBy: "\n")
         os_log("BUILDING ARRAY", log: OSLog.sparkArrayBuilder, type: .info)
         
@@ -78,6 +96,33 @@ struct SparkArrayBuilder {
         os_log("Spark Array Count: %d", log: OSLog.viewController, type: .info, sparkArray.count)
         
         os_log("ARRAY COMPLETE", log: OSLog.sparkArrayBuilder, type: .info)
+    }
+    
+    func deriveSparks(array: [[String]]) -> [[String]] {
+        //Read in full spark array list
+        //Pull out Spark IDs from spark tracker that have passed using current date vs begin date into array
+        //Use this new array to determine which sparks from the full array to return
+        
+        os_log("Deriving sparks ...", log: OSLog.sparkTableView, type: .info)
+        var loggedSparks: [[String]] = []
+        let keyHolder = sparkTracker.keys
+        print(keyHolder)
+        
+        for key in keyHolder {
+            let date = dfs.date(from: key)
+            //If date is in the past, add the corresponding spark to log
+            if(Date() >= date!) {
+                //Iterate through the master array and add the spark to log once found
+                for a in array {
+                    if(a.contains(sparkTracker[key]!)) {
+                        loggedSparks.append(a)
+                    }
+                }
+            }
+        }
+        
+        print(loggedSparks)
+        return loggedSparks
     }
     
 }

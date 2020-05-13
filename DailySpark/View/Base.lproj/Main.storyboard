@@ -10,7 +10,7 @@
         <!--Menu View Controller-->
         <scene sceneID="BIW-fH-EOg">
             <objects>
-                <viewController storyboardIdentifier="menuVC" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J2S-oB-t1K" customClass="MenuViewController" customModule="Spark_A_Day" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menuVC" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J2S-oB-t1K" customClass="MenuViewController" customModule="DailySpark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CqD-aY-rMU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,7 +66,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="Spark_A_Day" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="DailySpark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,104 +124,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="121.875"/>
-        </scene>
-        <!--Spark Table View Controller-->
-        <scene sceneID="Hjg-11-Lv6">
-            <objects>
-                <tableViewController id="uk4-Vx-3MG" customClass="SparkTableViewController" customModule="Spark_A_Day" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XSP-Uv-wHs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SparkTableViewCell" rowHeight="60" id="EHu-Eb-3Sb" customClass="SparkTableViewCell" customModule="Spark_A_Day" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EHu-Eb-3Sb" id="8vE-UN-kUh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="fza-oP-2BB">
-                                            <rect key="frame" x="50" y="19.5" width="100.5" height="21.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqH-MK-KgK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="46" height="21.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Blo-jw-lVl">
-                                                    <rect key="frame" x="61" y="0.0" width="39.5" height="21.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="fza-oP-2BB" firstAttribute="centerY" secondItem="8vE-UN-kUh" secondAttribute="centerY" id="Ucc-HG-9HE"/>
-                                        <constraint firstItem="fza-oP-2BB" firstAttribute="leading" secondItem="8vE-UN-kUh" secondAttribute="leadingMargin" constant="30" id="vXI-lS-nNI"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="categoryLabel" destination="Blo-jw-lVl" id="Hbv-rV-V8f"/>
-                                    <outlet property="primaryLabel" destination="IqH-MK-KgK" id="5iX-7I-rgV"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="uk4-Vx-3MG" id="KCI-f0-JJg"/>
-                            <outlet property="delegate" destination="uk4-Vx-3MG" id="EKw-KP-JcD"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="y1S-fs-te6"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="10j-6S-f0g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2014" y="122"/>
-        </scene>
-        <!--Spark View Controller-->
-        <scene sceneID="oNm-w1-Ryw">
-            <objects>
-                <viewController storyboardIdentifier="SparkViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xmY-xn-Hxp" customClass="SparkViewController" customModule="Spark_A_Day" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="H2R-8I-UBW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G81-c2-UFE">
-                                <rect key="frame" x="30" y="124" width="354" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mau-EO-A50">
-                                <rect key="frame" x="30" y="174.5" width="354" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Ure-eU-SIW" firstAttribute="trailing" secondItem="mau-EO-A50" secondAttribute="trailing" constant="30" id="5A8-PH-sFm"/>
-                            <constraint firstItem="mau-EO-A50" firstAttribute="leading" secondItem="Ure-eU-SIW" secondAttribute="leading" constant="30" id="9hb-f0-VUO"/>
-                            <constraint firstItem="mau-EO-A50" firstAttribute="top" secondItem="G81-c2-UFE" secondAttribute="bottom" constant="30" id="JbZ-RS-zyU"/>
-                            <constraint firstItem="G81-c2-UFE" firstAttribute="top" secondItem="Ure-eU-SIW" secondAttribute="top" constant="80" id="Jjl-ef-ZzU"/>
-                            <constraint firstItem="Ure-eU-SIW" firstAttribute="trailing" secondItem="G81-c2-UFE" secondAttribute="trailing" constant="30" id="TY6-Jh-xVu"/>
-                            <constraint firstItem="G81-c2-UFE" firstAttribute="leading" secondItem="Ure-eU-SIW" secondAttribute="leading" constant="30" id="aA7-GB-WQN"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ure-eU-SIW"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="eDW-5l-aZs"/>
-                    <connections>
-                        <outlet property="sparkBody" destination="mau-EO-A50" id="esb-eB-MqB"/>
-                        <outlet property="sparkHeader" destination="G81-c2-UFE" id="iEB-Sd-YbF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dyz-Kg-TiA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2980" y="121"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NcJ-yH-TEB">

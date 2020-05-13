@@ -21,6 +21,7 @@ extension OSLog {
     static let menuViewController = OSLog(subsystem: bundle, category: "menuViewController")
     static let notificationConfig = OSLog(subsystem: bundle, category: "notificationConfig")
     static let sparkTableView = OSLog(subsystem: bundle, category: "sparkTableView")
+    static let sparkList = OSLog(subsystem: bundle, category: "sparkList")
    
 }
 

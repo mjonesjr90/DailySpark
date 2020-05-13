@@ -15,6 +15,7 @@ struct SparkLogRow: View {
     var body: some View {
         HStack {
             Text(spark[1])
+            .minimumScaleFactor(0.2)
             Spacer()
             Text(spark[0])
         }

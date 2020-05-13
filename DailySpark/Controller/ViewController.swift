@@ -73,18 +73,18 @@ class ViewController: UIViewController {
         }
         
         //Resechedule notifications that haven't been sent yet, up to 64 max if applicable
-//        if(configured) {
-//            //Build array from file
-//            let sab = SparkArrayBuilder(file: "sparks")
-//
-//            //Use array to schedule notifications
-//            os_log("Spark List Count: %d", log: OSLog.viewController, type: .info, sab.sparkArray.count)
-//            var sb = SparkBuilder(array: sab.sparkArray)
-//            sb.cleanSparkTracker()
-//
-//            //Resechedule
-//            sb.scheduleNotifications()
-//        }
+        if(configured) {
+            //Build array from file
+            let sab = SparkArrayBuilder(file: "sparks")
+
+            //Use array to schedule notifications
+            os_log("Spark List Count: %d", log: OSLog.viewController, type: .info, sab.sparkArray.count)
+            var sb = SparkBuilder(array: sab.sparkArray)
+            sb.cleanSparkTracker()
+
+            //Resechedule
+            sb.scheduleNotifications()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -160,21 +160,21 @@ class ViewController: UIViewController {
         return loggedSparks
     }
     
-    @IBAction func sparkLogButtonPress(_ sender: Any) {
-        //Build array from file
-        let sab = SparkArrayBuilder(file: "sparks")
-        let sparkArray = deriveSparks(array: sab.sparkArray)
-//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let sparkListController = SparkLogList(
-            sparkArray: sparkArray,
-            dismissAction: {
-                self.dismiss( animated: true, completion: nil )
-        })
-        let hostController = UIHostingController(rootView: sparkListController)
-//        let hostController = UIHostingController(rootView: SparkLogList(sparkArray: sparkArray))
-        hostController.modalPresentationStyle = .fullScreen
-        present(hostController, animated: true)
-    }
+//    @IBAction func sparkLogButtonPress(_ sender: Any) {
+//        //Build array from file
+//        let sab = SparkArrayBuilder(file: "sparks")
+//        let sparkArray = deriveSparks(array: sab.sparkArray)
+////        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//        let sparkListController = SparkLogList(
+//            sparkArray: sparkArray,
+//            dismissAction: {
+//                self.dismiss( animated: true, completion: nil )
+//        })
+//        let hostController = UIHostingController(rootView: sparkListController)
+////        let hostController = UIHostingController(rootView: SparkLogList(sparkArray: sparkArray))
+//        hostController.modalPresentationStyle = .fullScreen
+//        present(hostController, animated: true)
+//    }
     
     func checkUserDefaults(){
         os_log("Checking user defaults ...", log: OSLog.viewController, type: .info)
