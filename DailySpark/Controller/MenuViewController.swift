@@ -54,6 +54,9 @@ class MenuViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
         menuView.addGestureRecognizer(tap)
+        
+        let toolBar = UIToolbar().toolBarDone(mySelect: #selector(screenTapped))
+        notificationTimeTextField.inputAccessoryView = toolBar
     }
     
     @objc func screenTapped() {
@@ -173,5 +176,28 @@ class MenuViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+extension UIToolbar {
+
+    func toolBarDone(mySelect : Selector) -> UIToolbar {
+
+        let toolBar = UIToolbar()
+
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+//        toolBar.barTintColor = UIColor(named: "Background")
+        toolBar.tintColor = UIColor.orange
+        toolBar.sizeToFit()
+
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: mySelect)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+
+        toolBar.setItems([ spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+
+        return toolBar
+    }
 
 }
