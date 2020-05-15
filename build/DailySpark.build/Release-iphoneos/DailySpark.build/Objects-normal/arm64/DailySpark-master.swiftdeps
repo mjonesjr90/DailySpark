@@ -1,0 +1,22 @@
+version: "Apple Swift version 5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+options: "e2f02d0848ba8c19103b59dc48144122"
+build_time: [1589338325, 5304000]
+inputs:
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/Extensions/AppDelegate+NotificationConfiguration.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/View/SparkTableViewController.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/Model/SparkArrayBuilder.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/View/SparkLogRow.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/Controller/ViewController.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/Controller/MenuViewController.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/Controller/ViewControllerWrapper.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/Controller/SparkLogDetail.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/View/SparkLogList.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/Extensions/OSLog+Customization.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/Controller/SparkBuilder.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/Controller/MenuWrapper.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/Controller/SparkViewController.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/View/MenuView.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/View/SparkTableViewCell.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/Controller/AppDelegate.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/View/MainView.swift": [9223372036, 854775807]
+  "/Users/malcomjonesjr/dev/ios/Spark A Day/DailySpark/Controller/SceneDelegate.swift": [9223372036, 854775807]

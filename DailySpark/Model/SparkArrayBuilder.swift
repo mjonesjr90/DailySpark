@@ -84,13 +84,17 @@ class SparkArrayBuilder: ObservableObject {
         //For each new row created (array element), break up by tab delimiter and add to another array
         for row in sparkRow {
             
-            //Derive spark component array and add to spark array
-            let sparkComponents = row.components(separatedBy: "\t")
-            sparkArray.append(sparkComponents)
+            if(!row.isEmpty) {
+                //Derive spark component array and add to spark array
+                let sparkComponents = row.components(separatedBy: "\t")
+                
+                sparkArray.append(sparkComponents)
+                
+    //            for component in sparkComponents {
+                    print("ROW: \(row)")
+    //            }
+            }
             
-//            for component in sparkComponents {
-//                print(component)
-//            }
         }
         
         os_log("Spark Array Count: %d", log: OSLog.viewController, type: .info, sparkArray.count)

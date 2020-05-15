@@ -31,19 +31,22 @@ struct SparkLogDetail: View {
 
                 Text(sparkBody)
                     .font(.body)
+                    .lineLimit(10)
+                    .minimumScaleFactor(0.2)
                     .padding(.bottom)
             }
             .padding()
-            .background(Color(.sRGB, red: 245/255, green: 245/255, blue: 245/255, opacity: 1))
-            .cornerRadius(5)
-            .shadow(color: Color(.sRGB, red: 120/255, green: 120/255, blue: 120/255, opacity: 1), radius: 2, x: 0, y: 2)
+            .background(Color(UIColor.systemBackground))
+            .cornerRadius(10)
+            .shadow(color: Color(.sRGB, red: 180/255, green: 180/255, blue: 180/255, opacity: 1), radius: 5)
             .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color(.sRGB, red: 245/255, green: 245/255, blue: 245/255, opacity: 1), lineWidth: 1)
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color(UIColor.systemBackground), lineWidth: 1)
+//                    .stroke(Color(.sRGB, red: 255/255, green: 255/255, blue: 255/255, opacity: 1), lineWidth: 1)
             )
-                .padding([.horizontal])
+                .padding([.top, .horizontal])
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 }
 

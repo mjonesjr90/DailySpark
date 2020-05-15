@@ -102,12 +102,12 @@ struct SparkLogList: View {
         if(!configured) {
             sb.scheduleNotifications()
         }
-        if(configured) {
-            sb.cleanSparkTracker()
-
-            //Resechedule
-            sb.scheduleNotifications()
-        }
+//        if(configured) {
+//            sb.cleanSparkTracker()
+//
+//            //Resechedule
+//            sb.scheduleNotifications()
+//        }
     }
     
     var body: some View {
@@ -119,7 +119,7 @@ struct SparkLogList: View {
                     SparkLogRow(spark: spark)
                 }
             }
-            .navigationBarTitle(Text("Spark Log"))
+            .navigationBarTitle(Text("Sparks"))
             .navigationBarItems(trailing:
                 NavigationLink(destination: AnyView(MenuView())) {
                     Image(systemName: "bell.fill")
@@ -161,6 +161,7 @@ struct SparkLogList: View {
                 SparkLogDetail(sparkHeader: self.sparkHeader, sparkCategory: "", sparkBody: self.sparkBody, show: self.$isPresented)
             }
         }
+        .accentColor( .orange)
     }
     
     func deriveSparks(array: [[String]]) -> [[String]] {
@@ -168,7 +169,7 @@ struct SparkLogList: View {
         //Pull out Spark IDs from spark tracker that have passed using current date vs begin date into array
         //Use this new array to determine which sparks from the full array to return
         
-        os_log("Deriving sparks ...", log: OSLog.sparkTableView, type: .info)
+        os_log("Deriving sparks ...", log: OSLog.sparkList, type: .info)
         var loggedSparks: [[String]] = []
         let keyHolder = sparkTracker.keys
         print(keyHolder)
